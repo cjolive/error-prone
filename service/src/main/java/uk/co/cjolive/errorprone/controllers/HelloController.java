@@ -11,7 +11,7 @@ import uk.co.cjolive.errorprone.services.HelloService;
 @RestController
 public class HelloController {
 
-    private HelloService helloService;
+    HelloService helloService;
 
     @Nullable private String lastName = null;
 
