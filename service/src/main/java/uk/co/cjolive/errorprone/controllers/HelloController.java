@@ -1,5 +1,6 @@
 package uk.co.cjolive.errorprone.controllers;
 
+import jakarta.annotation.Nullable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,9 +11,9 @@ import uk.co.cjolive.errorprone.services.HelloService;
 @RestController
 public class HelloController {
 
-    HelloService helloService;
+    private HelloService helloService;
 
-    String lastName = "None";
+    @Nullable private String lastName = null;
 
     @Autowired
     public HelloController(HelloService helloService) {

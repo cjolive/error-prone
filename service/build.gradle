@@ -1,6 +1,7 @@
 buildscript {
 	ext {
 		set('errorproneVersion', "2.24.0")
+		set('nullawayVersion', "0.10.19")
 	}
 }
 
@@ -24,7 +25,8 @@ repositories {
 
 dependencies {
 
-	implementation project(':checks')
+	//errorprone project(':checks')
+	//errorprone("com.uber.nullaway:nullaway:$nullawayVersion")
 
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
@@ -34,4 +36,18 @@ dependencies {
 
 tasks.named('test') {
 	useJUnitPlatform()
+}
+
+import net.ltgt.gradle.errorprone.CheckSeverity
+
+
+tasks.withType(JavaCompile) {
+
+	options.errorprone {
+		//check("MissingOverride", CheckSeverity.ERROR)
+
+		//check("NullAway", CheckSeverity.WARN)
+		//option("NullAway:AnnotatedPackages", "uk.co.cjolive")
+	}
+
 }
